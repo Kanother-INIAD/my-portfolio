@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    font-family: "Anton", "Mochiy Pop One", Arial, sans-serif;
+    display: flex;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.sidebar {
+    background-color: #2c3e50;
+    color: white;
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 20px 0;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+    font-family: "Anton", "Mochiy Pop One", sans-serif; /* サイドバーのリンクにMochiy Pop Oneを適用 */
+}
+.sidebar a:hover {
+    color: #ccc;
+}
+
+.content {
+    padding: 0 20px;
+    flex: 1;
+    transition: margin-left 0.3s;
+}
+
+.hero {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px 80px;
+    overflow: hidden;
+    background-color: #e7e7e7;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    line-height: 1.2;
+    text-align: center;
+    position: relative;
+    font-family: 'Anton', sans-serif;
+}
+
+.animated-text {
+    opacity: 0;
+    transform: translateX(-50%);
+    animation: slideIn 1s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+section {
+    padding: 80px 0;
+}
+
+.works {
+  padding: 80px 20px;
+  text-align: center;
+}
+.works h2 {
+  font-family: "Anton", "Mochiy Pop One", sans-serif;
+}
+
+
+.contact {
+  padding: 80px 20px;
+}
+.contact h2 {
+  font-family: "Anton", "Mochiy Pop One", sans-serif;
+}
+
+/* カルーセル調整 */
+.carousel {
+  width: 80%;
+  margin: 20px auto;
+}
+.carousel-inner{
+  border-radius: 10px;
+}
+.carousel-item img {
+  object-fit: cover;
+  height: 400px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        overflow: hidden;
+    }
+
+    .content {
+        padding: 0;
+    }
+    .works,
+    .contact {
+      padding: 80px 0;
+    }
+    .carousel {
+    width: 100%;
+    }
+}
+
+
+.logo {
+    width: 80%;
+    margin: 10px auto;
+    display: block;
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #592588;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loader {
+    text-align: center;
+}
+
+.rotating-logo {
+    width: 300px;
+    animation: rotate 2s linear infinite;
+}
+
+.loader p {
+    color: white;
+    font-size: 2rem;
+    margin-top: 10px;
+    font-family: "Anton", "Mochiy Pop One", sans-serif; /* ローディング画面のテキストにMochiy Pop Oneを適用 */
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+#loading-screen.fade-out {
+    animation: fadeOut 1s forwards;
+}
