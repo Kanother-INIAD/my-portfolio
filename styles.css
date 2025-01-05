@@ -4,6 +4,49 @@ body {
     display: flex;
     background-color: #f8f8f8;
     color: #333;
+    overflow-x: hidden;
+}
+
+/* レスポンシブ対応についての表記 */
+@media (max-width: 768px) {
+    :fullscreen .content {
+        margin-left: 0;  /* モバイル表示時 */
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .content {
+        padding: 0;
+        padding-top: 60px;
+        overflow-x: hidden;
+    }
+
+    .works,
+    .contact {
+      padding: 80px 0;
+    }
+
+    .carousel {
+    width: 100%;
+    }
+
+    .navbar-title {
+        font-size: 1rem;
+    }
+
+    .email {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    .scroll-top-btn {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 /* 以下、各タグにてフォントを指定しないとBootStrapの影響で変更されなくなる */
@@ -48,9 +91,13 @@ p {
 }
 
 .content {
-    padding: 0 20px;
+    padding: 0;
     flex: 1;
-    transition: margin-left 0.3s;
+    transition: margin-left 0.3s ease;
+}
+
+:fullscreen .content {
+    margin-left: 200px;  /* PC表示時 */
 }
 
 /* 最初のトップ部分について */
@@ -71,16 +118,13 @@ p {
     text-align: center;
     position: relative;
     font-family: 'Anton', sans-serif;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInHero 1s ease-out 3.2s forwards;
+    opacity: 1;
+    animation: heroTextReveal 2s ease forwards 3.2s;
 }
 
-/* アニメーションテキスト実装予定が、うまく機能してしていないやつ */
+/* アニメーションテキスト */
 .animated-text {
-    opacity: 0;
-    transform: translateX(-50%);
-    animation: slideIn 3.2s ease-out forwards;
+    display: inline-block;
 }
 
 /* 上手く機能していないやつ */
@@ -148,28 +192,7 @@ section {
 }
 .carousel-item img {
   object-fit: cover;
-  max-height: 800px;
-}
-
-/* 以下、レスポンシブ対応についての表記 */
-@media (max-width: 768px) {
-    .sidebar {
-        display: none;
-    }
-
-    .content {
-        padding: 0;
-        padding-top: 60px;
-    }
-
-    .works,
-    .contact {
-      padding: 80px 0;
-    }
-
-    .carousel {
-    width: 100%;
-    }
+  max-height: 600px;
 }
 
 /* ナビゲーションバーのロゴの調整 */
@@ -236,4 +259,88 @@ section {
 
 #loading-screen.fade-out {
     animation: fadeOut 1s forwards;
+}
+
+/* ナビゲーションバーにタイトルを追加したい */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-title {
+    margin-left: 10px;
+    font-family: "Anton", "Mochiy Pop One", sans-serif;
+    font-size: 1.5rem;
+}
+
+/* コンタクトセクションのスタイリング */
+.contact {
+    background-color: #323232;
+    color: white;
+    text-align: center;
+    padding: 80px 20px 40px;
+    position: relative;
+}
+
+.email-container {
+    margin-top: 40px;
+}
+
+.email {
+    font-size: 2rem;
+    font-family: "Anton", sans-serif;
+    letter-spacing: 2px;
+}
+
+/* メールアドレスの文字のアニメーション */
+.email-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.email-char.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* フッターコンテンツのスタイル */
+.footer-content {
+    margin-top: 60px;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* スクロールトップボタン */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.scroll-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top-btn:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-2px);
 }
