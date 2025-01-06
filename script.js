@@ -108,4 +108,36 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
+
+    const skillItems = document.querySelectorAll('.skill-item');
+    
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+
+    skillItems.forEach(item => {
+        skillObserver.observe(item);
+    });
+
+    const profileImage = document.querySelector('.profile-image');
+    const profileText = document.querySelector('.profile-text');
+
+    const aboutObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+
+    aboutObserver.observe(profileImage);
+    aboutObserver.observe(profileText);
 });
